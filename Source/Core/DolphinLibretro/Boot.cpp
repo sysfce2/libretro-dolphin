@@ -337,6 +337,9 @@ bool retro_load_game(const struct retro_game_info* game)
   Config::SetBase(Config::MAIN_CPU_THREAD,
     Libretro::GetOption<bool>(core::MAIN_CPU_THREAD, /*def=*/true));
 
+  Config::SetBase(Config::MAIN_LOAD_GAME_INTO_MEMORY,
+    Libretro::GetOption<bool>(core::MAIN_LOAD_GAME_INTO_MEMORY, /*def=*/false));
+
   Config::SetBase(Config::MAIN_ENABLE_CHEATS,
                      Libretro::GetOption<bool>(core::CHEATS_ENABLED, /*def=*/false));
 
