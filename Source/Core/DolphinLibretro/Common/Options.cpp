@@ -170,6 +170,20 @@ static struct retro_core_option_v2_definition option_defs[] = {
     "enabled"
   },
   {
+    Libretro::Options::core::MAIN_LOAD_GAME_INTO_MEMORY,
+    "Core > Load Whole Game Into Memory",
+    "Load Whole Game Into Memory",
+    "Load Whole Game Into Memory. Requires core RESTART.",
+    nullptr,
+    CATEGORY_CORE,
+    {
+      { "disabled", "Disabled" },
+      { "enabled",  "Enabled" },
+      { nullptr, nullptr }
+    },
+    "disabled"
+  },
+  {
     Libretro::Options::core::MAIN_PRECISION_FRAME_TIMING,
     "Core > Precision Frame Timing",
     "Precision Frame Timing",

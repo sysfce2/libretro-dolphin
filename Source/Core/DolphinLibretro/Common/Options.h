@@ -135,6 +135,7 @@ namespace core {
   constexpr const char CPU_CLOCK_RATE[] = "dolphin_cpu_clock_rate";
   constexpr const char EMULATION_SPEED[] = "dolphin_emulation_speed";
   constexpr const char MAIN_CPU_THREAD[] = "dolphin_main_cpu_thread";
+  constexpr const char MAIN_LOAD_GAME_INTO_MEMORY[] = "dolphin_main_load_game_into_memory";
   constexpr const char MAIN_PRECISION_FRAME_TIMING[] = "dolphin_precision_frame_timing";
   constexpr const char FASTMEM[] = "dolphin_fastmem";
   constexpr const char FASTMEM_ARENA[] = "dolphin_fastmem_arena";
