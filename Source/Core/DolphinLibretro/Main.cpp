@@ -79,6 +79,7 @@ double g_core_refresh_rate{0};
 // trigger a mode-family reinit, only a real in-game 50<->60 switch should.
 static bool s_refresh_rate_settled = false;
 extern void reload_cheats_from_ini();
+extern unsigned msg_interface_version;
 }  // namespace Libretro
 
 extern "C" {
@@ -119,6 +120,9 @@ void retro_init(void)
 {
   enum retro_pixel_format xrgb888 = RETRO_PIXEL_FORMAT_XRGB8888;
   Libretro::environ_cb(RETRO_ENVIRONMENT_SET_PIXEL_FORMAT, &xrgb888);
+
+  Libretro::environ_cb(RETRO_ENVIRONMENT_GET_MESSAGE_INTERFACE_VERSION,
+    &Libretro::msg_interface_version);
 }
 
 void retro_deinit(void)

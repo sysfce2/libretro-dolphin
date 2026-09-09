@@ -294,6 +294,7 @@ bool retro_load_game(const struct retro_game_info* game)
   {
     // Log the message instead of showing a popup
     WARN_LOG_FMT(COMMON, "Suppressed popup: {} - {}", caption, text);
+    Libretro::Log::LogFrontEnd(style, caption, text, 2000);
     return true; // Always "continue"
   });
 
@@ -305,10 +306,28 @@ bool retro_load_game(const struct retro_game_info* game)
 
   if (!File::Exists(codehandler))
   {
-    OSD::AddMessage(fmt::format("Core file {} missing! Go to Online Updater ->\nCore System Files Downloader -> Install Dolphin.zip. Restart core to take affect",
-      GECKO_CODE_HANDLER), OSD::Duration::VERY_LONG, OSD::Color::RED);
-    ERROR_LOG_FMT(BOOT, "Core file {} missing! Go to Online Updater -> Core System Files Downloader -> Install Dolphin.zip",
-      GECKO_CODE_HANDLER);
+#if defined(ANDROID) || defined(IPHONEOS)
+    // for reduced area to display the message..
+    const std::string missing_core_files_msg =
+      fmt::format(
+        "IMPORTANT - Open Online Updater ->\n"
+        "Core System Files Downloader -> Dolphin.zip.");
+#else
+    const std::string missing_core_files_msg =
+      fmt::format(
+        "Core file {} missing! Open Online Updater ->\n"
+        "Core System Files Downloader -> Install Dolphin.zip. "
+        "Restart core to take effect.",
+        GECKO_CODE_HANDLER);
+#endif
+
+    //OSD::AddMessage(missing_core_files_msg, OSD::Duration::VERY_LONG, OSD::Color::RED);
+
+    Libretro::Log::LogFrontEnd(
+      Common::Log::LogLevel::LERROR, missing_core_files_msg.c_str(),
+      OSD::Duration::VERY_LONG);
+
+    ERROR_LOG_FMT(BOOT, "{}", missing_core_files_msg);
   }
 
   // Main.Core
