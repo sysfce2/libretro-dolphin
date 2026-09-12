@@ -58,7 +58,7 @@ body:
       description: |
         Paste relevant log output here (use code blocks if possible). See here how to generate a log file: [libretro.com](https://docs.libretro.com/guides/generating-retroarch-logs/)
 
-        For large logs: [Pastebin](https://pastebin.com/) / [Hastebin](https://www.toptal.com/developers/hastebin) / [Gist](https://gist.github.com/). Do not uploads zip files!
+        For large logs: [Pastebin](https://pastebin.com/) / [Hastebin](https://www.toptal.com/developers/hastebin) / [Gist](https://gist.github.com/). Do not upload zip files!
     validations:
       required: true
 
